@@ -82,6 +82,7 @@ function checkAnswer() {
     if (currentQuestion === questions.length) {
         //go to end screen
         endGame();
+        
     }
 };
 
@@ -101,8 +102,8 @@ function showQuestion() {
         button.addEventListener("click", checkAnswer);
         answersEl.appendChild(button);
 
-    }
-}
+    };
+};
 
 
 
