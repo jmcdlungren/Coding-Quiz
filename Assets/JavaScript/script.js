@@ -6,12 +6,12 @@ var answersEl = document.querySelector("#answers");
 var time = document.querySelector("#time");
 var timer;
 var clock = 100;
+var highScore = document.querySelector("#high-scores");
+var initials = document.querySelector("#initials");
 
 
 
-// var questions = [
-//     "What HTML element is the JavaScript placed in?","How do you write 'Hello World' in an alert box?", "How do you call a function named 'myFunction'?", "How can you add a comment for a single line in JavaScript?", "How can you add a comment that has more than one line?", "JavaScript is the same as Java.", "Is JavaScript case-sensitive?", "How do you declare a JavaScript variable?"
-// ];
+
 
 var questions = [
     {
@@ -24,39 +24,38 @@ var questions = [
         choices: ["alert('Hello World')", "alertBox('Hello World')", "msgBox('Hello World')", "msg('Hello World')"],
         answer: "alert('Hello World')"
     },
-]
-
-var answr1 = [
-    "Section", "Script", "Head", "href"
+    {
+        question: "How do you call a function named 'myFunction'?",
+        choices: ["function() myFunction()", "myFunction()", "call myFunction()", "call function() myFunction()"],
+        answer: "myFunction()"
+    },
+    {
+        question: "How can you add a comment for a single line in JavaScript?",
+        choices: ["/*This is a comment*/", "'This is a comment'", "!!This is a comment", "//This is a comment"],
+        answer: "//This is a comment"
+    },
+    {
+        question: "How can you add a comment that has more than one line?",
+        choices: ["//This is a multi-line comment", "!/This is a multi-line comment/!", "/*This is a multi-line comment*/", "/&This is a multi-line comment&/"],
+        answer: "/*This is a multi-line comment*/"
+    },
+    {
+        question: "JavaScript is the same as Java.",
+        choices: ["True", "False"],
+        answer: "False"
+    },
+    {
+        question: "Is JavaScript case-sensitive?",
+        choices: ["Yes", "No"],
+        answer: "Yes"
+    },
+    {
+        question: "How do you declare a JavaScript variable?",
+        choices: ["var quizName", "call var Quiz-Name", "var Quiz-Name", "v quizName"],
+        answer: "var quizName"
+    }
 ];
 
-var answr2 = [
-    "alert('Hello World')", "alertBox('Hello World')", "msgBox('Hello World')", "msg('Hello World')"
-];
-
-var answr3 = [
-    "function() myFunction()", "myFunction()", "call myFunction()", "call function() myFunction()"
-];
-
-var answr4 = [
-    "/*This is a comment*/", "'This is a comment'", "!!This is a comment", "//This is a comment"
-];
-
-var answr5 = [
-    "//This is a multi-line comment", "!/This is a multi-line comment/!", "/*This is a multi-line comment*/", "/&This is a multi-line comment&/"
-];
-
-var answr6 = [
-    "True", "False"
-];
-
-var answr7 = [
-    "Yes", "No"
-];
-
-var answr8 = [
-    "var quizName", "call var Quiz-Name", "var Quiz-Name", "v quizName"
-];
 
 var currentQuestion = 0;
 
@@ -67,6 +66,10 @@ function startTimer() {
     }, 1000);
 };
 
+function endGame() {
+    questionsEl.classList.add("hide");
+    highScore.textContent = clock;
+};
 
 function checkAnswer() {
     console.log(this.dataset.value);
@@ -76,8 +79,9 @@ function checkAnswer() {
     } else {
         clock -= 10
     }
-    if (currentQuestion === questions.length - 1) {
+    if (currentQuestion === questions.length) {
         //go to end screen
+        endGame();
     }
 };
 
