@@ -15,6 +15,12 @@ var done = document.querySelector("#done");
 var gameOver = document.querySelector("#gameOver");
 var submit = document.querySelector("#submit");
 var viewScores = document.querySelector("#view-scores");
+var finalScore = 0;
+var scoreBoard = [];
+if (localStorage.getItem("scoreBoard")) {
+    scoreBoard = JSON.parse(localStorage.getItem("scoreBoard"))
+};
+var leaderboard = document.querySelector("#leaderboard");
 
 
 
@@ -76,28 +82,20 @@ function startTimer() {
 
 function endGame() {
     quizOver = true;
-    clearInterval(startTimer());
-    time += clock;
+    clearInterval(timer);
     gameOver.classList.remove("hide");
     questionsEl.classList.add("hide");
-    score.textContent = "Score: " + clock;
+    finalScore = clock;
+    score.textContent = "Score: " + finalScore;
     
     
 
     
 };
 
-function showHighScores() {
-    var userScore = localStorage.getItem("clock");
-    var initials = localStorage.getItem("initialsEl");
 
-    if (!userScore || !initials) {
-        return;
-    }
 
-    highScoreTotal.textContent = userScore + " " + initials;
-    
-    };
+
 
 function checkAnswer() {
     console.log(this.dataset.value);
@@ -135,21 +133,31 @@ function showQuestion() {
 
 // renderHighScores();
 
-// function renderHighScores() {
-//   var email = localStorage.getItem("email");
-//   var password = localStorage.getItem("password");
 
-//   if (!email || !password) {
-//     return;
-//   }
 
-//   userEmailSpan.textContent = email;
-//   userPasswordSpan.textContent = password;
-// }
+submit.addEventListener("click", function(event) {
+    event.preventDefault();
+    var initials = initialsEl.value;
+    var userScore = finalScore;
+    console.log(initials, userScore);
+    var userData = {
+        initials: initials,
+        score: userScore,
+    };
 
-viewScores.addEventListener("click", showHighScores());
+    scoreBoard.push(userData);
+    console.log(scoreBoard);
+    localStorage.setItem("scoreBoard", JSON.stringify(scoreBoard));
+    
+    showHighScores();
+});
 
-submit.addEventListener("click", function() {
+function showHighScores() {
+    leaderboard.classList.remove("hide");
+    highScoreTotal.textContent = scoreBoard;
+    };
+
+viewScores.addEventListener("click", function() {
     showHighScores();
 });
 
@@ -158,3 +166,4 @@ start.addEventListener("click", function() {
     startTimer();
     showQuestion();
 });
+
