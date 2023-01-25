@@ -11,43 +11,53 @@
 </head>
 
 <body>
-    <header id="header">
-        <h1>Let's Take a Coding Quiz!</h1>
-        <button id="start">Start</button>
-    </header>
-
-    <section>
-        <div id="questions" class="hide">
-            <h2 id="question-title"></h2>
-            <ol id="answers"></ol>
-        </div>
-    </section>
-
-    <section>
-        <div id="time"></div>
-    </section>
-
-    <section>
-        <div>
-            <button id="high-scores" class="leaderboard" type="submit">
+    <header>
+        <div class="top">
+            <button id="view-scores" type="submit">
                 <h3>View High Scores</h3>
             </button>
+            <div id="time"></div>
         </div>
-    </section>
+        
+        </div>
+        <div id="header">
+            <h1>Let's Take a Coding Quiz!</h1>
+            <button id="start">Start</button>
+        </div>
+        
+    </header>
 
-    <section id="gameOver" class="hide">
-        <div>
-            <h2 id="done">Game over!</h2>
-            <p id="score">Score: </p>
-            <form>
-                <label>Enter initials here:</label>
-                <input id="initials" type="text" />
-                <button id="submit" type="submit">
-                    <h3>Submit</h3>
-                </button>
-            </form>
-        </div>
-    </section>
+    <main class="quiz">
+        <section>
+            <div id="questions" class="hide">
+                <h2 id="question-title"></h2>
+                <ol id="answers"></ol>
+            </div>
+        </section>
+    
+        <section id="gameOver" class="hide">
+            <div>
+                <h2 id="done">Game over!</h2>
+                <p id="score"></p>
+                <form>
+                    <label>Enter initials here:</label>
+                    <input id="initials" type="text" />
+                    <button id="submit" type="submit">
+                        <h3>Submit</h3>
+                    </button>
+                </form>
+            </div>
+        </section>
+
+        <section id="leaderboard" class="hide">
+            <h2>High Scores</h2>
+            <div>
+                <ol id="high-scores"></ol>
+            </div>
+        </section>
+    </main>
+    
+
 
     <script src="./Assets/JavaScript/script.js"></script>
 </body>

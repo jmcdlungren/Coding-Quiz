@@ -26,12 +26,33 @@ p {
     margin: 0;
 }
 
+.top {
+    margin: 2px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 5px;
+}
+
 header {
     text-align: center;
 }
 
+.quiz {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .hide {
     display: none;
+}
+
+#answers {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    list-style-type: upper-alpha;
 }
 
 .leaderboard {

@@ -13,7 +13,8 @@ var highScore = true;
 var score = document.querySelector("#score");
 var done = document.querySelector("#done");
 var gameOver = document.querySelector("#gameOver");
-
+var submit = document.querySelector("#submit");
+var viewScores = document.querySelector("#view-scores");
 
 
 
@@ -66,7 +67,7 @@ var currentQuestion = 0;
 function startTimer() {
     timer = setInterval(function(){
         clock--
-        time.textContent = clock;
+        time.textContent = "Time: " + clock;
         if (clock === 0) {
             endGame();
         }
@@ -79,7 +80,7 @@ function endGame() {
     time += clock;
     gameOver.classList.remove("hide");
     questionsEl.classList.add("hide");
-    // score.textContent = time;
+    score.textContent = "Score: " + clock;
     
     initials.value = '';
 };
@@ -104,7 +105,7 @@ function showQuestion() {
 
     for (let i = 0; i < questions[currentQuestion].choices.length; i++) {
         var button = document.createElement("button");
-        button.textContent = questions[currentQuestion].choices[i]
+        button.textContent = questions[currentQuestion].choices[i];
         button.setAttribute("data-value", questions[currentQuestion].choices[i]);
         button.addEventListener("click", checkAnswer);
         answersEl.appendChild(button);
@@ -116,6 +117,17 @@ function showQuestion() {
     }
 };
 
+
+
+function showHighScores() {
+    
+}
+
+viewScores.addEventListener("click", showHighScores())
+
+submit.addEventListener("click", function() {
+    showHighScores()
+});
 
 
 start.addEventListener("click", function() {
