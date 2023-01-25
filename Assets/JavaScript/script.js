@@ -6,9 +6,13 @@ var answersEl = document.querySelector("#answers");
 var time = document.querySelector("#time");
 var timer;
 var clock = 100;
-var highScore = document.querySelector("#high-scores");
+var highScoreTotal = document.querySelector("#high-scores");
 var initials = document.querySelector("#initials");
-
+var quizOver = true;
+var highScore = true;
+var score = document.querySelector("#score");
+var done = document.querySelector("#done");
+var gameOver = document.querySelector("#gameOver");
 
 
 
@@ -62,13 +66,22 @@ var currentQuestion = 0;
 function startTimer() {
     timer = setInterval(function(){
         clock--
-        time.textContent = clock
-    }, 1000);
+        time.textContent = clock;
+        if (clock === 0) {
+            endGame();
+        }
+    }, 1000)
 };
 
 function endGame() {
+    quizOver = true;
+    clearInterval(startTimer());
+    time += clock;
+    gameOver.classList.remove("hide");
     questionsEl.classList.add("hide");
-    highScore.textContent = clock;
+    // score.textContent = time;
+    
+    initials.value = '';
 };
 
 function checkAnswer() {
@@ -79,15 +92,9 @@ function checkAnswer() {
     } else {
         clock -= 10
     }
-    if (currentQuestion === questions.length) {
-        //go to end screen
-        endGame();
-        
-    }
 };
 
 function showQuestion() {
-    startTimer();
     header.classList.add("hide");
     questionsEl.classList.remove("hide");
     
@@ -103,8 +110,15 @@ function showQuestion() {
         answersEl.appendChild(button);
 
     };
+    if (currentQuestion === questions.length - 1) {
+        //go to end screen
+        endGame();
+    }
 };
 
 
 
-start.addEventListener("click", showQuestion);
+start.addEventListener("click", function() {
+    startTimer();
+    showQuestion();
+});

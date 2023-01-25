@@ -33,3 +33,9 @@ header {
 .hide {
     display: none;
 }
+
+.leaderboard {
+    display: flex;
+    justify-content: start;
+    align-items: flex-start;
+}

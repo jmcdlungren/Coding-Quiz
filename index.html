@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -27,12 +28,25 @@
     </section>
 
     <section>
-        <div id="high-scores">
-
+        <div>
+            <button id="high-scores" class="leaderboard" type="submit">
+                <h3>View High Scores</h3>
+            </button>
         </div>
-        <form id="initials">
+    </section>
 
-        </form>
+    <section id="gameOver" class="hide">
+        <div>
+            <h2 id="done">Game over!</h2>
+            <p id="score">Score: </p>
+            <form>
+                <label>Enter initials here:</label>
+                <input id="initials" type="text" />
+                <button id="submit" type="submit">
+                    <h3>Submit</h3>
+                </button>
+            </form>
+        </div>
     </section>
 
     <script src="./Assets/JavaScript/script.js"></script>
