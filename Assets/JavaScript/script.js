@@ -7,7 +7,7 @@ var time = document.querySelector("#time");
 var timer;
 var clock = 100;
 var highScoreTotal = document.querySelector("#high-scores");
-var initials = document.querySelector("#initials");
+var initialsEl = document.querySelector("#initials");
 var quizOver = true;
 var highScore = true;
 var score = document.querySelector("#score");
@@ -82,8 +82,22 @@ function endGame() {
     questionsEl.classList.add("hide");
     score.textContent = "Score: " + clock;
     
-    initials.value = '';
+    
+
+    
 };
+
+function showHighScores() {
+    var userScore = localStorage.getItem("clock");
+    var initials = localStorage.getItem("initialsEl");
+
+    if (!userScore || !initials) {
+        return;
+    }
+
+    highScoreTotal.textContent = userScore + " " + initials;
+    
+    };
 
 function checkAnswer() {
     console.log(this.dataset.value);
@@ -119,14 +133,24 @@ function showQuestion() {
 
 
 
-function showHighScores() {
-    
-}
+// renderHighScores();
 
-viewScores.addEventListener("click", showHighScores())
+// function renderHighScores() {
+//   var email = localStorage.getItem("email");
+//   var password = localStorage.getItem("password");
+
+//   if (!email || !password) {
+//     return;
+//   }
+
+//   userEmailSpan.textContent = email;
+//   userPasswordSpan.textContent = password;
+// }
+
+viewScores.addEventListener("click", showHighScores());
 
 submit.addEventListener("click", function() {
-    showHighScores()
+    showHighScores();
 });
 
 
