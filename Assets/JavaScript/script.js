@@ -92,10 +92,6 @@ function endGame() {
     score.textContent = "Score: " + finalScore;
 };
 
-
-
-
-
 function checkAnswer() {
     console.log(this.dataset.value);
     if (questions[currentQuestion].answer === this.dataset.value) {
@@ -109,21 +105,16 @@ function checkAnswer() {
 function showQuestion() {
     header.classList.add("hide");
     questionsEl.classList.remove("hide");
-    
     qTitle.textContent = questions[currentQuestion].question;
-
     answersEl.textContent = "";
-
     for (let i = 0; i < questions[currentQuestion].choices.length; i++) {
         var button = document.createElement("button");
         button.textContent = questions[currentQuestion].choices[i];
         button.setAttribute("data-value", questions[currentQuestion].choices[i]);
         button.addEventListener("click", checkAnswer);
         answersEl.appendChild(button);
-
     };
     if (currentQuestion === questions.length - 1) {
-        //go to end screen
         endGame();
     }
 };
@@ -155,10 +146,6 @@ function showHighScores() {
     };
     leaderboard.classList.remove("hide");
 };
-
-// function clearHighScores() {
-//     scoreBoard.splice(0, scoreBoard.length);
-// };
 
 viewScores.addEventListener("click", function() {
     header.classList.add("hide");
