@@ -9,7 +9,6 @@ var clock = 100;
 var highScoreTotal = document.querySelector("#high-scores");
 var initialsEl = document.querySelector("#initials");
 var quizOver = true;
-var highScore = true;
 var score = document.querySelector("#score");
 var done = document.querySelector("#done");
 var gameOver = document.querySelector("#gameOver");
@@ -20,6 +19,7 @@ var scoreBoard = [];
 if (localStorage.getItem("scoreBoard")) {
     scoreBoard = JSON.parse(localStorage.getItem("scoreBoard"))
 };
+
 var leaderboard = document.querySelector("#leaderboard");
 
 
@@ -85,6 +85,7 @@ function endGame() {
     clearInterval(timer);
     gameOver.classList.remove("hide");
     questionsEl.classList.add("hide");
+    time.classList.add("hide");
     finalScore = clock;
     score.textContent = "Score: " + finalScore;
     
@@ -150,12 +151,17 @@ submit.addEventListener("click", function(event) {
     localStorage.setItem("scoreBoard", JSON.stringify(scoreBoard));
     
     showHighScores();
+    gameOver.classList.add("hide");
 });
 
 function showHighScores() {
-    leaderboard.classList.remove("hide");
-    highScoreTotal.textContent = scoreBoard;
+    for (let i = 0; i < scoreBoard.length; i++) {
+        var highScore = document.createElement("li");
+        highScore.textContent = scoreBoard[i];
+        highScoreTotal.appendChild(highScore);
     };
+    leaderboard.classList.remove("hide");
+};
 
 viewScores.addEventListener("click", function() {
     showHighScores();
