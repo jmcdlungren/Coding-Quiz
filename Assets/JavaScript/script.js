@@ -21,6 +21,8 @@ if (localStorage.getItem("scoreBoard")) {
 };
 
 var leaderboard = document.querySelector("#leaderboard");
+var clearScores = document.querySelector("#clear-scores");
+var goBack = document.querySelector("#go-back");
 
 
 
@@ -154,10 +156,25 @@ function showHighScores() {
     leaderboard.classList.remove("hide");
 };
 
+// function clearHighScores() {
+//     scoreBoard.splice(0, scoreBoard.length);
+// };
+
 viewScores.addEventListener("click", function() {
+    header.classList.add("hide");
     showHighScores();
 });
 
+clearScores.addEventListener("click", function() {
+    scoreBoard.splice(0, scoreBoard.length);
+    localStorage.clear ();
+    highScoreTotal.textContent = scoreBoard;
+});
+
+goBack.addEventListener("click", function() {
+    header.classList.remove("hide");
+    leaderboard.classList.add("hide");
+});
 
 start.addEventListener("click", function() {
     leaderboard.classList.add("hide");
