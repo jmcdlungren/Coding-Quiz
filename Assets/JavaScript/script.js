@@ -88,10 +88,6 @@ function endGame() {
     time.classList.add("hide");
     finalScore = clock;
     score.textContent = "Score: " + finalScore;
-    
-    
-
-    
 };
 
 
@@ -130,12 +126,6 @@ function showQuestion() {
     }
 };
 
-
-
-// renderHighScores();
-
-
-
 submit.addEventListener("click", function(event) {
     event.preventDefault();
     var initials = initialsEl.value;
@@ -155,9 +145,10 @@ submit.addEventListener("click", function(event) {
 });
 
 function showHighScores() {
+    scoreBoard = scoreBoard.sort(function(a, b) { return b.score - a.score; }); 
     for (let i = 0; i < scoreBoard.length; i++) {
         var highScore = document.createElement("li");
-        highScore.textContent = scoreBoard[i];
+        highScore.textContent = "Initials: " + scoreBoard[i].initials + "   ||   Score: " + scoreBoard[i].score;
         highScoreTotal.appendChild(highScore);
     };
     leaderboard.classList.remove("hide");
@@ -169,6 +160,7 @@ viewScores.addEventListener("click", function() {
 
 
 start.addEventListener("click", function() {
+    leaderboard.classList.add("hide");
     startTimer();
     showQuestion();
 });
