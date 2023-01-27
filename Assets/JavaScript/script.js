@@ -159,8 +159,7 @@ clearScores.addEventListener("click", function() {
 });
 
 goBack.addEventListener("click", function() {
-    header.classList.remove("hide");
-    leaderboard.classList.add("hide");
+    window['location'].reload ();
 });
 
 start.addEventListener("click", function() {

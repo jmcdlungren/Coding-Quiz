@@ -22,7 +22,7 @@ Screenshots as follows:
 
 ## Usage
 
-When the user clicks the "Start" button, they will be prompted with a quiz question and a timer will start in the upper right corner. As the user goes through the quiz, if they get any answers wrong, they will lose 10 seconds, and as the user gets the answer right, it will move to the next question. This will occcur until all questions are answered or the timer runs out. Once the timer runs out, the user will be presented with a "Game Over" screen showing their score (equal to the remainder of seconds), and they will be prompted to enter in their initials for the scoreboard. Once done and they submit, they will see the high scores screen and have the option to go back to the quiz. To start over, the user would then refresh the screen.
+When the user clicks the "Start" button, they will be prompted with a quiz question and a timer will start in the upper right corner. As the user goes through the quiz, if they get any answers wrong, they will lose 10 seconds, and as the user gets the answer right, it will move to the next question. This will occcur until all questions are answered or the timer runs out. Once the timer runs out, the user will be presented with a "Game Over" screen showing their score (equal to the remainder of seconds), and they will be prompted to enter in their initials for the scoreboard. Once done and they submit, they will see the high scores screen and have the option to go back to the quiz. By clicking 'Go Back', the webpage will refresh, allowing the user to restart the quiz.
 
 In addition, the user can access the high scores menu by pressing the "View High Scores" button in the top left corner of the website.
 
