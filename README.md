@@ -16,7 +16,7 @@ Screenshots as follows:
 
 ![High Scores Cleared Screen](./Assets/Images/High%20Scores%20Cleared.jpg)
 
-[Password Generator Webpage](https://jmcdlungren.github.io/Coding-Quiz/)
+[Coding Quiz Webpage](https://jmcdlungren.github.io/Coding-Quiz/)
 
 [GitHub Repository Link](https://github.com/jmcdlungren/Coding-Quiz)
 
